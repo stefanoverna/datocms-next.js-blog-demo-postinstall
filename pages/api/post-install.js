@@ -62,7 +62,11 @@ export default async (req, res) => {
     ]);
 
     return res.status(200).json({ success: true });
-  } catch (e) {
-    return res.status(500).json({ error: error.message });
+  } catch (error) {
+    return res.status(500).json({
+      error: error.message,
+      request: error.request,
+      response: error.response,
+    });
   }
 };
